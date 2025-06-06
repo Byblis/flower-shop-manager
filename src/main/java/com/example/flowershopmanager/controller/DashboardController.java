@@ -8,24 +8,28 @@ public class DashboardController {
 
   
 
-    @GetMapping("/sales")
+    @GetMapping("/dashboard/sales")
     public String showSales() {
-        return "sales"; // sales.html を表示（仮）
+        return "sales-dashboard"; // sales.html を表示（仮）
     }
 
-    @GetMapping("/inventory")
+    @GetMapping("/dashboard/inventory")
     public String showInventory() {
-        return "inventory"; // inventory.html を表示（仮）
+        return "inventory-dashboard"; // inventory.html を表示（仮）
+    }
+     @GetMapping("/dashboard/reservation")
+    public String showreservation() {
+        return "reservation-dashboard"; // inventory.html を表示（仮）
     }
 
-    @GetMapping("/operations")
+    @GetMapping("/dashboard/operations")
     public String showOperations() {
-        return "operations"; // operations.html を表示（仮）
+        return "operations-dashboard"; // operations.html を表示（仮）
     }
 
-    @GetMapping("/admin/passcode")
+    @GetMapping("/dashboard/admin/passcode")
     public String showAdminMenu() {
-        return "admin-passcode"; // admin-passcode.html を表示（仮）
+        return "admin-passcode-dashboard"; // admin-passcode.html を表示（仮）
     }
 }
 
