@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ReservationsController {
 
-    @GetMapping("/reservations")
-    public String showReservations() {
-        return "reservations"; // → reservations.html を表示！
-    }
+   @GetMapping("/reservations-flow")
+public String showReservations() {
+    return "reservations";
+}
+
 }
 
