@@ -1,1 +1,19 @@
-<h1>Flower Shop Manager にようこそ🌷</h1>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>フロー選択 | Flower Shop Manager</title>
+</head>
+<body>
+    <h1>Flower Shop Manager</h1>
+    <p>業務フローを選んでください</p>
+
+    <ul>
+        <li><a th:href="@{/sales}">🛒 販売フロー</a></li>
+        <li><a th:href="@{/dashboard/reservations}">📅 予約フロー</a></li>
+        <li><a th:href="@{/inventory}">📦 在庫フロー</a></li>
+        <li><a th:href="@{/operations}">🧹 店内作業フロー</a></li>
+        <li><a th:href="@{/admin/passcode}">🧑‍💼 管理者メニュー</a></li>
+    </ul>
+</body>
+</html>
