@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>販売履歴</title>
+</head>
+<body>
+    <h1>📈 販売履歴画面</h1>
+    <p>ここに販売履歴を表示予定！</p>
+    <a th:href="@{/dashboard/sales}">← 販売フローへ戻る</a>
+<h2>📜 販売履歴一覧</h2>
+<ul>
+    <li th:each="sale : ${sales}" th:text="${sale}"></li>
+</ul>
+
+</body>
+</html>
+

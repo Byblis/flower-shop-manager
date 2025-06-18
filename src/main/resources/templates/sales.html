@@ -6,9 +6,15 @@
     <title>販売フロー | Flower Shop Manager</title>
 </head>
 <body>
-    <h1>🛒 販売フロー</h1>
+    <h1>🛒 販売フロー(カルモテスト）</h1>
     <p>ここは販売フローのトップページです。</p>
     <p>このページから商品選択 → 条件分岐 → 会計 へ進む予定です！</p>
+<h2>販売フロー</h2>
+
+<div>
+  <button onclick="location.href='/product-select'">商品選択</button>
+  <button onclick="location.href='/sales-history'">販売履歴</button>
+</div>
 
     <a th:href="@{/dashboard}">← ダッシュボードへ戻る</a>
 </body>

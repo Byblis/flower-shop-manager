@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品一覧</title>
+</head>
+<body>
+    <h1>📋 商品一覧</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>種類</th>
+                <th>品種名</th>
+                <th>色</th>
+                <th>入荷日</th>
+                <th>入荷数</th>
+                <th>仕入単価</th>
+                <th>在庫数</th>
+                <th>破棄数</th>
+                <th>備考</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.type}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.color}"></td>
+                <td th:text="${product.arrivalDate}"></td>
+                <td th:text="${product.arrivalQuantity}"></td>
+                <td th:text="${product.purchasePrice}"></td>
+                <td th:text="${product.stockQuantity}"></td>
+                <td th:text="${product.discardQuantity}"></td>
+                <td th:text="${product.note}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <a th:href="@{/products/form}">＋ 新しい商品を登録</a><br>
+    <a th:href="@{/dashboard/inventory}">← 在庫フローへ戻る</a>
+</body>
+</html>
