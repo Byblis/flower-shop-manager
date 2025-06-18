@@ -1,4 +1,3 @@
-
 package com.example.flowershopmanager;
 
 import org.springframework.boot.SpringApplication;
@@ -8,10 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.context.annotation.ComponentScan; // ← 追加！
 
 @SpringBootApplication
-@EntityScan(basePackages = "com.example.flowershopmanager.entity") // ★ 追加
-@EnableJpaRepositories(basePackages = "com.example.flowershopmanager.repository") // ★ 追加
+@EntityScan(basePackages = "com.example.flowershopmanager.entity")
+@EnableJpaRepositories(basePackages = "com.example.flowershopmanager.repository")
+@ComponentScan(basePackages = "com.example.flowershopmanager.controller") // ★★★ これ追加！
 public class FlowerShopManagerApplication {
 
     public static void main(String[] args) {
