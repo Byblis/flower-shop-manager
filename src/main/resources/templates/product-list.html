@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>商品一覧</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
     <h1>📋 商品一覧</h1>
@@ -18,12 +19,14 @@
                 <th>入荷数</th>
                 <th>仕入単価</th>
                 <th>在庫数</th>
+                <th>しきい値</th>
                 <th>破棄数</th>
                 <th>備考</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="product : ${products}">
+            <tr th:each="product : ${products}"
+                th:classappend="${product.threshold != null and product.stockQuantity <= product.threshold} ? 'low-stock'"
                 <td th:text="${product.id}"></td>
                 <td th:text="${product.type}"></td>
                 <td th:text="${product.name}"></td>
@@ -32,14 +35,42 @@
                 <td th:text="${product.arrivalQuantity}"></td>
                 <td th:text="${product.purchasePrice}"></td>
                 <td th:text="${product.stockQuantity}"></td>
+                <td th:text="${product.threshold}"></td>
                 <td th:text="${product.discardQuantity}"></td>
                 <td th:text="${product.note}"></td>
             </tr>
         </tbody>
     </table>
 
+    <!-- 🔔 しきい値アラート表示 -->
+    <div id="stock-alert" style="display:none; color: red; font-weight: bold; margin-top: 20px;">
+        ⚠️ 在庫がしきい値を下回っている商品があります！
+    </div>
+
+    <!-- 戻るボタン -->
     <br>
     <a th:href="@{/products/form}">＋ 新しい商品を登録</a><br>
     <a th:href="@{/dashboard/inventory}">← 在庫フローへ戻る</a>
+
+    <!-- JS：しきい値チェック用 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let showAlert = false;
+
+            const rows = document.querySelectorAll("tbody tr");
+            rows.forEach(row => {
+                const stock = parseInt(row.cells[7]?.textContent.trim());
+                const threshold = parseInt(row.cells[8]?.textContent.trim());
+
+                if (!isNaN(stock) && !isNaN(threshold) && stock <= threshold) {
+                    showAlert = true;
+                }
+            });
+
+            if (showAlert) {
+                document.getElementById("stock-alert").style.display = "block";
+            }
+        });
+    </script>
 </body>
 </html>

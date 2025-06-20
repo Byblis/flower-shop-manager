@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品登録フォーム</title>
+</head>
+<body>
+    <h1>📝 商品登録</h1>
+
+    <form th:action="@{/products/save}" th:object="${product}" method="post">
+        <label>種類：</label>
+        <input type="text" th:field="*{type}" required><br><br>
+
+        <label>品種名：</label>
+        <input type="text" th:field="*{name}" required><br><br>
+
+        <label>色：</label>
+        <input type="text" th:field="*{color}"><br><br>
+
+        <label>入荷日：</label>
+        <input type="date" th:field="*{arrivalDate}"><br><br>
+
+        <label>入荷数：</label>
+        <input type="number" th:field="*{arrivalQuantity}"><br><br>
+
+        <label>仕入単価：</label>
+        <input type="number" th:field="*{purchasePrice}"><br><br>
+
+        <label>在庫数：</label>
+        <input type="number" th:field="*{stockQuantity}"><br><br>
+
+        <label>破棄数：</label>
+        <input type="number" th:field="*{discardQuantity}"><br><br>
+
+        <label>備考：</label>
+        <input type="text" th:field="*{note}"><br><br>
+
+        <button type="submit">登録する</button>
+    </form>
+
+    <a th:href="@{/dashboard/inventory}">← 在庫フローに戻る</a>
+</body>
+</html>
+

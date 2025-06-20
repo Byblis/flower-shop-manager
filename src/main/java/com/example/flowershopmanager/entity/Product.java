@@ -21,6 +21,11 @@ public class Product {
     private int discardQuantity;
     private String note;
 
+    @Column(name = "threshold") // ← DBのカラム名と合わせるために追加
+    private int threshold; // しきい値
+
+    // --- Getter & Setter ---
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -50,5 +55,10 @@ public class Product {
 
     public String getNote() { return note; }
     public void setNote(String note) { this.note = note; }
+
+    public int getThreshold() { return threshold; }
+    public void setThreshold(int threshold) { this.threshold = threshold; }
 }
+
+
 
