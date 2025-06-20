@@ -8,6 +8,8 @@
 <body>
     <h1>📋 商品一覧</h1>
 
+    
+
     <table border="1">
         <thead>
             <tr>
@@ -26,19 +28,20 @@
         </thead>
         <tbody>
             <tr th:each="product : ${products}"
-                th:classappend="${product.threshold != null and product.stockQuantity <= product.threshold} ? 'low-stock'"
-                <td th:text="${product.id}"></td>
-                <td th:text="${product.type}"></td>
-                <td th:text="${product.name}"></td>
-                <td th:text="${product.color}"></td>
-                <td th:text="${product.arrivalDate}"></td>
-                <td th:text="${product.arrivalQuantity}"></td>
-                <td th:text="${product.purchasePrice}"></td>
-                <td th:text="${product.stockQuantity}"></td>
-                <td th:text="${product.threshold}"></td>
-                <td th:text="${product.discardQuantity}"></td>
-                <td th:text="${product.note}"></td>
-            </tr>
+    th:classappend="${product.threshold != null and product.stockQuantity <= product.threshold} ? 'low-stock'">
+    <td th:text="${product.id}"></td>
+    <td th:text="${product.type}"></td>
+    <td th:text="${product.name}"></td>
+    <td th:text="${product.color}"></td>
+    <td th:text="${product.arrivalDate}"></td>
+    <td th:text="${product.arrivalQuantity}"></td>
+    <td th:text="${product.purchasePrice}"></td>
+    <td th:text="${product.stockQuantity}"></td>
+    <td th:text="${product.threshold}"></td>
+    <td th:text="${product.discardQuantity}"></td>
+    <td th:text="${product.note}"></td>
+</tr>
+
         </tbody>
     </table>
 

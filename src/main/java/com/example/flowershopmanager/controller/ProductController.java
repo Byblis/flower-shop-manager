@@ -23,12 +23,15 @@ public class ProductController {
         return "product-form";
     }
 
-    // 商品データを保存する
-    @PostMapping("/save")
-    public String saveProduct(@ModelAttribute Product product) {
-        productRepository.save(product);
-        return "redirect:/products/list"; // 登録後に一覧へリダイレクト！
+   @PostMapping("/save")
+public String saveProduct(@ModelAttribute Product product) {
+    if (product.getThreshold() == null) {
+        product.setThreshold(20); // ← nullだったら20を入れる（自動設定）
     }
+    productRepository.save(product);
+    return "redirect:/products/list";
+}
+
 
     // 商品一覧を表示（次ステップで作る画面）
     @GetMapping("/list")
@@ -36,7 +39,6 @@ public class ProductController {
         model.addAttribute("products", productRepository.findAll());
         return "product-list";
     }
-
 }
 
 
