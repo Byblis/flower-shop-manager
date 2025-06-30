@@ -15,12 +15,13 @@ public class DailyReportService {
     @Autowired
     private DailyReportRepository repository;
 
-    public void saveReport(String content) {
-        DailyReport report = new DailyReport();
-        report.setDate(LocalDate.now());
-        report.setContent(content);
-        repository.save(report);
-    }
+    // 修正後（OK）
+public void saveReport(LocalDate date, String content) {
+    DailyReport report = new DailyReport();
+    report.setDate(date); // ← フォームから受け取った日付を使う！
+    report.setContent(content);
+    repository.save(report);
+}
 
     public List<DailyReport> getAllReports() {
         return repository.findAll();

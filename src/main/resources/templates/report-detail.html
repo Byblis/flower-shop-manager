@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>日報詳細</title>
+</head>
+<body>
+    <h2>📄 日報詳細</h2>
+
+    <p><strong>📅 日付：</strong><span th:text="${report.date}">2025-07-01</span></p>
+
+    <hr>
+
+    <p><strong>📝 内容：</strong></p>
+    <p th:text="${report.content}">ここに日報の内容が表示されます。</p>
+
+    <hr>
+
+    <a th:href="@{/reports}">← 戻る</a>
+</body>
+</html>
+
+

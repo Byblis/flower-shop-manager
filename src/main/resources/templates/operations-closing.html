@@ -2,10 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>閉店処理 | Flower Shop Manager</title>
+    <title>閉店処理</title>
 </head>
 <body>
     <h1>🌇 閉店処理</h1>
     <p>閉店時のチェックリストを記載予定です。</p>
+
+    <form th:action="@{/dashboard/operations/submitReport}" method="post">
+        <label for="reportDate">日付を選択：</label>
+        <input type="date" id="reportDate" name="reportDate" required><br><br>
+
+        <textarea name="report" rows="6" cols="60" placeholder="本日の作業内容を記入" required></textarea><br><br>
+
+        <button type="submit">📥 日報を保存</button>
+        <a th:href="@{/reports}">
+            <button type="button">📅 日報履歴を見る</button>
+        </a>
+    </form>
+
+    <p th:text="${message}"></p>
 </body>
 </html>
+
+
+
+

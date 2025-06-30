@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>日報一覧</title>
+</head>
+<body>
+    <h2>📅 日報一覧</h2>
+    <ul>
+        <li th:each="report : ${reports}">
+            <a th:href="@{'/reports/' + ${report.id}}" th:text="${report.date}">2025-06-24</a>
+            <form th:action="@{'/reports/delete/' + ${report.id}}" method="post" style="display:inline;">
+              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+              <button type="submit">🗑️ 削除</button>
+            </form>
+        </li>
+    </ul>
+</body>
+</html>
+
