@@ -1,8 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><title>管理者メニュー</title></head>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理者ログイン</title>
+</head>
 <body>
-    <h1>🧑‍💼 管理者メニュー画面（仮）</h1>
-    <p>管理者限定の機能にアクセスします🔐</p>
+    <h1>🔐 管理者ログイン</h1>
+
+    <!-- ★ パスが /admin/login でOK -->
+    <form action="/admin/login" method="post">
+        <label for="passcode">パスコード：</label>
+        <input type="password" id="passcode" name="passcode" required>
+        <button type="submit">ログイン</button>
+    </form>
+
+    <!-- ★ Thymeleaf式の修正 -->
+    <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
+    <p><a href="/dashboard">🏠 ダッシュボードに戻る</a></p>
 </body>
 </html>
+
+

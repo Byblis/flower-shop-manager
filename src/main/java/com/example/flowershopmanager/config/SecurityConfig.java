@@ -16,18 +16,19 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login", "/css/**").permitAll() // ログイン画面やCSSはOK
-                .anyRequest().authenticated() // 他はログイン必要
+                .requestMatchers("/login", "/css/**", "/admin/login", "/admin/**").permitAll() // ← 追加
+                .anyRequest().authenticated()
             )
             .formLogin(form -> form
-                // .loginPage("/login") // カスタムログイン画面あるなら使える！
-                .defaultSuccessUrl("/dashboard", true) // ログイン後にダッシュボード
+                // .loginPage("/login") // 必要なら有効化
+                .defaultSuccessUrl("/dashboard", true)
                 .permitAll()
             )
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
-            );
+            )
+            .csrf(csrf -> csrf.disable()); // フォーム認証があるなら必須（403対策）
 
         return http.build();
     }
@@ -35,13 +36,14 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withUsername("user")
-            .password("{noop}12345") // {noop}なら平文パスワードOK
+            .password("{noop}12345") // パスワードは平文でOK（{noop}付き）
             .roles("USER")
             .build();
 
         return new InMemoryUserDetailsManager(user);
     }
 }
+
 
 
 
