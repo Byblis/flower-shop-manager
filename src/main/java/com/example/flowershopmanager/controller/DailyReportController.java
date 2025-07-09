@@ -27,6 +27,13 @@ public class DailyReportController {
         return "operations-closing";
     }
 
+    @PostMapping("/reports/delete/{id}")
+public String deleteReport(@PathVariable Long id) {
+    service.deleteReportById(id);
+    return "redirect:/reports";
+}
+
+
     @GetMapping("/reports")
     public String showReportList(Model model) {
         List<DailyReport> reports = service.getAllReports();

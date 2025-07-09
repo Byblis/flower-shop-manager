@@ -11,4 +11,5 @@ public class SalesHistoryController {
     public String showSalesHistoryPage() {
         return "salesHistory";
     }
+    
 }

@@ -30,5 +30,10 @@ public void saveReport(LocalDate date, String content) {
     public Optional<DailyReport> getReportById(Long id) {
         return repository.findById(id);
     }
+
+    public void deleteReportById(Long id) {
+    repository.deleteById(id);
+}
+
 }
 

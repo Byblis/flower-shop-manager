@@ -1,0 +1,18 @@
+<!-- templates/memberLookup.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>会員情報取得</title>
+</head>
+<body>
+    <h1>🔍 会員情報を検索</h1>
+    <form th:action="@{/point-grant}" method="get">
+        <label>会員番号または名前：</label>
+        <input type="text" name="keyword" />
+        <button type="submit">検索してポイント付与へ進む</button>
+    </form>
+
+    <a th:href="@{/product-select}">← 商品選択画面に戻る</a>
+</body>
+</html>

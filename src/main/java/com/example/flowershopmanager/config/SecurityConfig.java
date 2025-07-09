@@ -1,4 +1,4 @@
-package com.example.flowershopmanager.controller;
+package com.example.flowershopmanager.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,16 +16,16 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login", "/css/**").permitAll() // ログイン画面やCSSは誰でもOK
-                .anyRequest().authenticated()                    // 他はログイン必須
+                .requestMatchers("/login", "/css/**").permitAll() // ログイン画面やCSSはOK
+                .anyRequest().authenticated() // 他はログイン必要
             )
             .formLogin(form -> form
-                // .loginPage("/login") ← カスタムログイン画面使いたいなら有効に！
-                .defaultSuccessUrl("/dashboard", true)           // ログイン後ダッシュボードへ
+                // .loginPage("/login") // カスタムログイン画面あるなら使える！
+                .defaultSuccessUrl("/dashboard", true) // ログイン後にダッシュボード
                 .permitAll()
             )
             .logout(logout -> logout
-                .logoutSuccessUrl("/login?logout")               // ログアウト後にログイン画面
+                .logoutSuccessUrl("/login?logout")
                 .permitAll()
             );
 
@@ -35,11 +35,13 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withUsername("user")
-            .password("{noop}12345") // {noop}でハッシュ化なしパスOK！
+            .password("{noop}12345") // {noop}なら平文パスワードOK
             .roles("USER")
             .build();
 
         return new InMemoryUserDetailsManager(user);
     }
 }
+
+
 
