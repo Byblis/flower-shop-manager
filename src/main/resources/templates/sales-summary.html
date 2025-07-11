@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>売上集計</title>
+</head>
+<body>
+    <h1>📊 売上集計</h1>
+
+    <!-- 🔽 集計フォーム -->
+    <form action="/admin/sales" method="get">
+        <label for="type">集計タイプ：</label>
+        <select id="type" name="type" onchange="toggleDateInputs()">
+            <option value="day" th:selected="${selectedType == 'day'}">日別</option>
+            <option value="week" th:selected="${selectedType == 'week'}">週別</option>
+            <option value="month" th:selected="${selectedType == 'month'}">月別</option>
+        </select>
+
+        <!-- 📅 日付入力（どの集計タイプでも使う） -->
+        <div id="dateInput">
+            <label for="date">基準日：</label>
+            <input type="date" id="date" name="date" th:value="${selectedDate}">
+        </div>
+
+        <button type="submit">集計</button>
+    </form>
+
+    <hr>
+
+    <!-- 💰 総売上の表示 -->
+    <div th:if="${totalSales != null}">
+        <h2>💰 総売上：<span th:text="${totalSales}">0</span> 円</h2>
+    </div>
+
+    <!-- ℹ️ メッセージ（未集計時） -->
+    <div th:if="${totalSales == null}">
+        <p>※ 集計条件を選んで「集計」ボタンを押してください。</p>
+    </div>
+
+    <!-- JS：初期化 -->
+    <script>
+        function toggleDateInputs() {
+            // 今は date 入力だけなので何もしない
+        }
+        window.onload = toggleDateInputs;
+    </script>
+</body>
+</html>
+

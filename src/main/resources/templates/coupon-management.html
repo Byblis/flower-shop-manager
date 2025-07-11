@@ -1,0 +1,22 @@
+<h1>🎁 クーポン・DM発行</h1>
+
+<!-- クーポン作成フォーム -->
+<form action="/admin/coupon/create" method="post">
+  <label>タイトル：
+    <input type="text" name="title" required value="夏の大感謝祭クーポン">
+  </label><br>
+
+  <label>説明：
+    <input type="text" name="description" value="全商品10%オフ！1回限りご利用可">
+  </label><br>
+
+  <label>割引額：
+    <input type="number" name="discount" required value="10">
+  </label>（％）<br>
+
+  <label>有効期限：
+    <input type="date" name="expiry" required value="2025-07-31">
+  </label><br>
+
+  <button type="submit">発行</button>
+</form>
